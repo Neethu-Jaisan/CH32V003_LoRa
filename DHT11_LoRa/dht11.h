@@ -3,10 +3,12 @@
 
 #include "ch32v00x.h"
 
-#define DHT11_PIN GPIO_Pin_1 // Define the GPIO pin for DHT11 (Change if needed)
-#define DHT11_PORT GPIOA
+typedef struct {
+    uint8_t temperature;
+    uint8_t humidity;
+} DHT11_Data;
 
-void DHT11_Init(void);
-uint8_t DHT11_Read(uint8_t *temperature, uint8_t *humidity);
+void DHT11_Init(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+uint8_t DHT11_Read(DHT11_Data *data);
 
 #endif
